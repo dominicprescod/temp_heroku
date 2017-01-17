@@ -26,6 +26,17 @@ var express     = require('express'),
           });
     });
 
+
+app.get('/', function(req, res){
+  var logs = []
+  client.query(sql('stuff').toString())
+          .on('row', function(row){
+            logs.push(row)
+          })
+          .on('end', function(result){
+            res.send(logs)
+          })
+})
     app.listen(port, function(){
           console.log("I'm on!");
         });
