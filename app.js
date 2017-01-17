@@ -10,6 +10,7 @@ var express     = require('express'),
 
     app.post('/new', function(req, res){
       fs.writeFileSync('./file.json', JSON.stringify(req.body), 'utf-8')
+      res.send(req.body)
     })
     app.listen(port, function(){
       console.log("I'm on")
